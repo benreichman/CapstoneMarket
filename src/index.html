@@ -1,0 +1,624 @@
+<!-- Ben Reichman -->
+<html>
+    <head>
+        
+        <script src="js/openpgp.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ultra&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <!-- <script src="js/openpgp.min.js"></script> -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> 
+        <style>
+            h1{
+                font-family: 'Oswald', sans-serif;
+                color: rgb(255, 255, 255);
+                -webkit-text-stroke-width: 1.0px;
+                -webkit-text-stroke-color: black;
+            }
+
+            h6{
+                font-family: 'Bebas Neue', cursive;
+                
+            }
+
+            table {
+              font-family: arial, sans-serif;
+              
+              /* border-collapse: collapse; */
+              width: 100%;
+            }
+            tr{
+                width: 100%;
+            }
+
+            td{
+                font-size: 10px;
+            }
+            
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+              color:white;
+            }
+            
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+
+            label{
+                color:white;
+                font-family: 'Roboto', sans-serif;
+                
+            }
+
+            #modalBodyContent{
+                font-family: 'Bebas Neue', cursive;
+            }
+
+            h4{
+                font-family: 'Bebas Neue', cursive;
+            }
+
+            .modal-Content{
+                background-color: #9c9c9c;
+            }
+
+            
+
+            .tablink {
+                background-color: #1a1e21;
+                color: white;
+                float: left;
+                border: none;
+                outline: black;
+                cursor: pointer;
+                padding: 14px 16px;
+                font-size: 17px;
+                width: 25%;
+                font-family: 'Montserrat', sans-serif;
+                border-bottom: 3px solid #0f3321;
+            }
+
+            .tablink2 {
+                background-color: #1a1e21;
+                color: white;
+                float: left;
+                border: none;
+                outline: black;
+                cursor: pointer;
+                padding: 14px 16px;
+                font-size: 17px;
+                width: 20%;
+                font-family: 'Montserrat', sans-serif;
+                border-bottom: 3px solid #0f3321;
+            }
+            
+            .tablink:hover {
+                background-color: #303438;
+            }
+
+            .tablink2:hover {
+                background-color: #303438;
+            }
+
+
+            
+            /* Style the tab content (and add height:100% for full page content) */
+            .tabcontent {
+                color: white;
+                display: none;
+                padding: 100px 20px;
+                height: 100%;
+            }
+
+            
+
+            body{
+                background-color:  rgb(19 21 23);
+            }
+
+            .card{
+                background-color: rgb(34 38 41);
+                color:white;
+                font-family: 'Roboto', sans-serif;
+                /* width: 150px; */
+
+
+            }
+
+
+            .card img{
+                text-align: center;
+                vertical-align: middle;
+            }
+            
+
+            #topContainer{
+                /* background-color: rgb(6 25 49); */
+                background-color: rgb(23 26 29);
+                /* background-image: url('https://cdn.hipwallpaper.com/i/35/29/j4t0DI.jpg');
+                opacity: 1; */
+            }
+
+            #bottomContainer{
+                background-color: rgb(23 26 29);
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height:10%;
+                color: white;
+                text-align: center;
+                border-top: 2px solid #0f3321;
+                /* box-shadow: 0px -5px 0px 0px rgb(15 44 82); */
+                /* background-image: url('https://cdn.hipwallpaper.com/i/35/29/j4t0DI.jpg');
+                opacity: 1; */
+            }
+
+            #inputPGP2{
+                color: white;
+            }
+
+            #alertBar {
+                border: 1px solid;
+                padding: 10px;
+                box-shadow: 0px 5px;
+                color: #678277;
+            }
+
+            #menuBarCustomer{
+                padding-top: -10px;
+            }
+
+            
+            #Home {background-color: rgb(22, 51, 22);}
+            #News {background-color: rgb(22, 51, 22);}
+            #Contact {background-color: rgb(22, 51, 22);}
+            #About {background-color: rgb(22, 51, 22);}
+
+            /* abdul */
+
+            #form-box {
+                position: relative;
+                top: 250px;
+                left: 50%;
+                width: 400px;
+                padding: 30px;
+                transform: translate(-50%, -50%);
+                background: rgb(25 27 30);
+                box-sizing: border-box;
+                box-shadow: 0 15px 25px rgba(0,0,0,.6);
+                border-radius: 10px;
+                }
+
+                #form-box h5 {
+                margin: 0 0 30px;
+                padding: 0;
+                color: #fff;
+                text-align: center;
+                font-family: 'Bebas Neue', cursive;
+                }
+
+                #form-box #user-box {
+                position: relative;
+                }
+
+                #form-box #user-box input {
+                width: 100%;
+                padding: 10px 0;
+                font-size: 16px;
+                color: #fff;
+                margin-bottom: 30px;
+                border: none;
+                border-bottom: 1px solid #fff;
+                outline: none;
+                background: transparent;
+                }
+                #form-box #user-box label {
+                position: absolute;
+                top:0;
+                left: 0;
+                padding: 10px 0;
+                font-size: 16px;
+                color: #fff;
+                pointer-events: none;
+                transition: .5s;
+                }
+
+                #form-box #user-box input:focus ~ label,
+                #form-box #user-box input:valid ~ label {
+                top: -20px;
+                left: 0;
+                color: white;
+                font-size: 12px;
+                }
+
+                #form-box form a {
+                position: relative;
+                display: inline-block;
+                padding: 10px 20px;
+                color: white;
+                font-size: 16px;
+                text-decoration: none;
+                text-transform: uppercase;
+                overflow: hidden;
+                transition: .5s;
+                margin-top: 40px;
+                letter-spacing: 4px;
+                font-family: 'Bebas Neue', cursive;
+                }
+
+                #form-box a:hover {
+                background: white;
+                color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 0 5px white,
+                            0 0 25px white,
+                            0 0 50px white,
+                            0 0 100px white;
+                }
+
+                #form-box a span {
+                position: absolute;
+                display: block;
+                }
+
+                #form-box a span:nth-child(1) {
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, white);
+                animation: btn-anim1 1s linear infinite;
+                }
+
+                @keyframes btn-anim1 {
+                0% {
+                    left: -100%;
+                }
+                50%,100% {
+                    left: 100%;
+                }
+                }
+
+                #form-box a span:nth-child(2) {
+                top: -100%;
+                right: 0;
+                width: 2px;
+                height: 100%;
+                background: linear-gradient(180deg, transparent, white);
+                animation: btn-anim2 1s linear infinite;
+                animation-delay: .25s
+                }
+
+                @keyframes btn-anim2 {
+                0% {
+                    top: -100%;
+                }
+                50%,100% {
+                    top: 100%;
+                }
+                }
+
+                #form-box a span:nth-child(3) {
+                bottom: 0;
+                right: -100%;
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(270deg, transparent,white);
+                animation: btn-anim3 1s linear infinite;
+                animation-delay: .5s
+                }
+
+                @keyframes btn-anim3 {
+                0% {
+                    right: -100%;
+                }
+                50%,100% {
+                    right: 100%;
+                }
+                }
+
+                #form-box a span:nth-child(4) {
+                bottom: -100%;
+                left: 0;
+                width: 2px;
+                height: 100%;
+                background: linear-gradient(360deg, transparent, white);
+                animation: btn-anim4 1s linear infinite;
+                animation-delay: .75s
+                }
+
+                @keyframes btn-anim4 {
+                0% {
+                    bottom: -100%;
+                }
+                50%,100% {
+                    bottom: 100%;
+                }
+                }
+        </style>
+        
+    </head>
+    <body>
+        
+        <div id='topContainer'>
+            <div class="alert alert-success" role="alert" id="alertBar" style="display:none; text-align:center"> 
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-app-indicator" viewBox="0 0 16 16">
+                    <path d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z"/>
+                    <path d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                  </svg>
+                You've recieved a new message!
+                <b><button data-toggle="modal" href="#myModalMessages" class="btn-outline-success btn-sm" onclick="activateMessagesModal()"> View Now</button></b>
+            </div>
+            <br>
+            <h1 id='marketName' style='text-align:center'>Market</h1>
+            <div style="text-align:center">
+                <button id="AsBuyer" onclick="enterMarketPortal()" class="btn btn-dark">Shop the market</button>
+                <button id="AsSeller" onclick="enterSellerPortal()" class="btn btn-dark">Enter Seller Portal</button>
+                <button id="ApplyAsSeller" class="btn btn-dark">Apply to be a seller</button>
+                <br>
+                <div style="padding-top:5px;"></div>
+                <button type="button" class="btn btn-outline-success btn-sm"   disabled ><span id='activeAccountLabel'></span></button>
+                <br>
+                <br>
+                <button type="button" class="btn btn-outline-light btn-sm"   disabled ><span id="marketValue" style='color:white'><small>Market Total Volume: </small></span></button>
+                <br>
+                <button type="button" class="btn btn-outline-light btn-sm"   disabled ><span id="marketFeesSpan" style='color:white'><small>Market Fees Locked: </small></span></button>
+                <br>
+                <button id='trythis' onclick='tryThis()'>Try this</button>
+                <button  onclick='redeemCEth()'>Redeem CEth</button>
+                <button onclick='balanceUnderlying()'>BalanceUnderlying</button>
+                <button onclick='tryThis2()'>Supply</button>
+                <button onclick='getContractBalanceCompound()'>Get returned eth balance</button>
+
+                <!-- <button onclick="getCompound()">Compound</button>; -->
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Launch demo modal
+                </button> -->
+                
+            </div>
+            <br>
+            
+        </div>
+        <div id='MenuBarCustomer'>
+            <button class="tablink" onclick="showProductsTab()">Products</button>
+            <button class="tablink" onclick="showOrdersTab()" id="defaultOpen">My Orders
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+                  </svg> -->
+            </button>
+            <button class="tablink" onclick="showSettingsTab()">Settings</button>
+            <button class="tablink" onclick="showMsgTab()">Messenger</button>
+        </div>
+        <div id='MenuBarMerchant' style='display:none'>
+            <button class="tablink2" onclick="showNewProductTab()">New Product</button>
+            <button class="tablink2" onclick="showMerchantOrders()">Sales</button>
+            <button class="tablink2" onclick="showMerchantStats()" id="defaultOpen" data-toggle="modal" data-target="#myModal">Account Stats</button>
+            <button class="tablink2" onclick="showSettingsTab()">Settings</button>
+            <button class="tablink2" onclick="showMsgTab()">Messenger</button>
+        </div>
+        <hr>
+        <div id = 'productsTableDiv'>
+            <!-- <table id='productsTable'>
+                <tr>
+                    <th> Merchant Address</th>
+                    <th> Product ID#</th>
+                    <th> Product Name</th>
+                    <th> Image URL</th>
+                    <th> Price(Wei) </th>
+                    <th> Order</th>
+                </tr>
+            </table> -->
+            <div class="overflow-auto row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 " id='productsTable'>
+                
+            </div> 
+        </div>
+        <div id='myOrdersDiv'>
+            <br>
+            <table id='usersOrdersTable' class="table table-dark">
+            <tr>
+                <th> Order ID</th>
+                <th> First name</th>
+                <th> Last name</th>
+                <th> Customer ID</th>
+                <th> Merchant ID </th>
+                <th> Total price</th>
+                <th> Product ID</th>
+                <th> Quantity</th>
+                <th> Amt paid</th>
+                <th> Finalized(Status)</th>
+            </tr>
+            </table>
+        </div>
+        <div id='mySettings' style="text-align:center">
+            <br>
+            <br>
+            <label for="inputPGP" id='inputPGP2'  >Update PGP key:</label>
+            <br>
+            <textarea type="text" id="inputPGP" class="form-control" style="height:25%; width:85%; background-color:rgb(187, 185, 185);margin:auto;" aria-describedby="passwordHelpBlock" rows="10"></textarea>
+            <br>
+            <small id="passwordHelpBlock" class="form-text text-muted">
+                You must input a valid PGP key, as well as verify the validity of your key on your own. <br>
+                We are not responsible for any loss incurred as a result of failure to do so.
+            </small>
+            <br>
+            <br>
+            <button type="button" class="btn btn-success" onclick="updatePGPkey()">Update</button>
+            
+        </div>
+        <!-- <div id = 'NewProductUploadDiv'>
+
+            <label for="fname">Product Name:</label>
+            <br>
+            <input type="text" id="prodName"><br><br>
+            <br>
+            <label for="lname">Price(ETH)</label>
+            <br>
+            <input type="text" id="priceETH"><br><br>
+            <br>
+            <label for="lname">Picture URL</label>
+            <br>
+            <input type="text" id="pictureURL"><br><br>
+            <button onclick='submitNewProduct()'>Upload new item</button>
+
+        </div> -->
+        <br>
+        
+        <div id="form-box">
+        
+            <h5>Enter Product Info</h5>
+            <form>
+              <div id="user-box">
+                <input type="text" id="prodName">
+                <label>Product Name: </label>
+              </div>
+              <div id="user-box">
+                <input type="text" id="priceETH">
+                <label>Price (ETH): </label>
+                <div id="user-box">
+                <input type="text" id="pictureURL">
+                <label>Picture URL: </label>
+              </div>
+              <a onclick='submitNewProduct()'>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Upload New Item
+              </a>
+            </form>
+        </div>
+        </div>
+
+        <div id="merchantOrders">
+            <table id="merchantOrdersTable" class="table table-dark" >
+                <tr>
+                    <th>Order ID</th>
+                    <th>Product ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Customer ID</th>
+                    <th>Amt Paid</th>
+                    <th>Quantity</th>
+                    <th>Finalized(Status)</th>
+                </tr>
+
+            </table>
+
+        </div>
+
+        <div id="messengerDiv" style="display:none; text-align:center;">
+            <br>
+            <form>
+                <br>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">To address:</label>
+                    <textarea class="form-control" id="toAddressTextArea" rows="3" style="width:85%;margin:auto;background-color: rgb(187, 185, 185);"></textarea>
+                  </div>
+                <br>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Message: </label>
+                    <textarea class="form-control" id="msgTextArea" rows="3" style="width:85%;margin:auto;background-color: rgb(187, 185, 185);"></textarea>
+                  </div>
+                <br>
+                <br>
+                <button type="button" class="btn btn-success" onclick="sendMessage1()">Send</button>
+              </form>
+        </div>
+
+        <!-- user card modal begins here -->
+        <div class="modal show" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="btn btn-outline-dark" data-dismiss="modal" aria-hidden="true">x</button>
+                  <h4 class="modal-title">Vendor</h4>
+                </div>
+                <div class="modal-body" id="modalBodyContent">
+                  Content for the dialog / modal goes here.
+                </div>
+                <div class="modal-footer">
+                  <!-- <a href="#" data-dismiss="modal" class="btn btn-primary">Close</a> -->
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- message modal begins here -->
+        <div class="modal show" id="myModalMessages">
+            <div class="modal-dialog"> 
+              <div class="modal-content">
+                <div class="modal-header" >
+                  <button type="button" class="btn btn-outline-dark" data-dismiss="modal" aria-hidden="true">x</button>
+                  <h4 class="modal-title" >New Messages</h4>
+                </div>
+                <div class="modal-body" id="modalBodyContentMessages">
+                  Content for the dialog / modal goes here.
+                </div>
+                <div class="modal-footer">
+                  <!-- <a href="#" data-dismiss="modal" class="btn btn-primary">Close</a> -->
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- <div class="modal show" id="exampleModal"  aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <iframe src="/CapstoneMarket/src/COMP.html">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+        <div id='bottomContainer'>
+            <br>
+            <button class="btn btn-dark" onclick="previousPage()">Previous</button>
+            
+            <button  class="btn btn-dark" id='currentPage'>1</button>
+            <button  class="btn btn-dark" onclick="nextPage()">Next</button>
+            <br>
+            <br>
+            <small style='color:#676f79'>&copy; Copyright 2021, Capstone Market</small>
+            
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/web3.min.js"></script>
+        <script src="js/truffle-contract.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@compound-finance/compound-js@latest/dist/browser/compound.min.js"></script>
+
+        <script src="js/app.js"></script>
+        
+        
+        
+
+    </body>
+</html>
